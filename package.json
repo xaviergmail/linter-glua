@@ -1,12 +1,12 @@
 {
-  "name": "linter-lua",
+  "name": "linter-glua",
   "linter-package": true,
   "main": "./lib/init",
   "version": "0.1.6",
-  "description": "Lint Lua on the fly, using luac -p or luajit -bl",
+  "description": "Lint (Garry's Mod) Lua on the fly, using gluac -p",
   "repository": {
     "type": "git",
-    "url": "https://github.com/AtomLinter/linter-lua"
+    "url": "https://github.com/xaviergmail/linter-glua"
   },
   "license": "MIT",
   "engines": {

@@ -6,7 +6,7 @@ class LinterLua extends Linter
   # list/tuple of strings. Names should be all lowercase.
   @syntax: 'source.lua'
 
-  linterName: 'luac'
+  linterName: 'gluac'
 
   # A regex pattern used to extract information from the executable's output.
   regex:
@@ -15,20 +15,18 @@ class LinterLua extends Linter
     '(?<message>.+?' +
     '(?:near (?<near>\'.+\')|$))'
 
-  errorStream: 'stderr'
+  errorStream: 'stdout'
 
   constructor: (editor) ->
     super(editor)
 
     # Set to observe config options
-    @configSubscription = atom.config.observe 'linter-lua.executable', => @updateCommand()
+    @configSubscription = atom.config.observe 'linter-glua.executable', => @updateCommand()
 
   updateCommand: ->
-    executable = atom.config.get 'linter-lua.executable'
-    if /luajit[^\\/]*$/.test(executable)
-        @cmd = [executable, '-bl']
-    else
-        @cmd = [executable, '-p']
+    executable = atom.config.get 'linter-glua.executable'
+    console.log executable
+    @cmd = [executable, '-p']
 
   destroy: ->
     super

@@ -2,8 +2,8 @@ module.exports =
   config:
     executable:
       type: 'string'
-      default: 'luac'
-      description: 'The executable path to luac or luajit.'
+      default: 'gluac'
+      description: 'The executable path to gluac'
 
   activate: ->
-    console.log 'activate linter-lua'
+    console.log 'activate linter-glua'
