@@ -1,8 +1,7 @@
 {
   "name": "linter-glua",
-  "linter-package": true,
   "main": "./lib/init",
-  "version": "0.2.1",
+  "version": "1.0.0",
   "description": "Lint (Garry's Mod) Lua on the fly, using gluac -p",
   "repository": {
     "type": "git",
@@ -12,5 +11,14 @@
   "engines": {
     "atom": ">0.50.0"
   },
-  "dependencies": {}
+  "providedServices": {
+    "linter": {
+      "versions": {
+        "1.0.0": "provideLinter"
+      }
+    }
+  },
+  "dependencies": {
+    "atom-linter": "^2.0.0"
+  }
 }
