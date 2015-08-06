@@ -1,7 +1,7 @@
 {
   "name": "linter-glua",
   "main": "./lib/init",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Lint (Garry's Mod) Lua on the fly, using gluac -p",
   "repository": {
     "type": "git",
