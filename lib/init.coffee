@@ -8,7 +8,7 @@
 
   scope:
     type: 'string'
-    default: 'file'
+    default: 'File'
     enum: ['File', 'Project']
     description: 'Lint entire project or just current file.'
 
@@ -23,12 +23,15 @@
     @executablePath = executable
 
   @subscriptions.add atom.config.observe 'linter-glua.scope', (scope) =>
-    @scope = scope
+    @scope = scope or 'File'
+
+  @subscriptions.add atom.config.observe 'linter-glua.lintOnSave', (save) =>
+    @lintOnSave = save
 
 @deactivate = =>
   @subscriptions.dispose()
 
-@provideLinter = ->
+@provideLinter = =>
   regex = '^.+?:.+?:' +
       '(?<line>\\d+):\\s+' +
       '(?<message>.+?' +
@@ -37,7 +40,7 @@
   provider =
     grammarScopes: ['source.lua']
     scope: @scope.toLowerCase()
-    lintOnFly: if scope is 'project' then false else not lintOnSave
+    lintOnFly: if @scope is 'project' then false else not @lintOnSave
     lint: (textEditor) =>
       new Promise (resolve, reject) =>
         parameters = ['-p', textEditor.getPath()]
